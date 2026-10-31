@@ -1,0 +1,9 @@
+{
+  "name": "@excelsior/nn2sheet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Compiles neural networks into spreadsheet workbooks whose formulas implement the model.",
+  "exports": { ".": "./src/index.ts", "./templates": "./src/templates.ts" },
+  "dependencies": { "@excelsior/engine": "0.1.0", "@excelsior/doc": "0.1.0" }
+}

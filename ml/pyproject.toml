@@ -1,0 +1,45 @@
+[project]
+name = "excelsior-ml"
+version = "0.1.0"
+description = "Reference models for excelsior: a NumPy MLP trajectory and a tiny char-level transformer."
+authors = [{ name = "Aamod Bhatt" }]
+license = "MIT"
+requires-python = ">=3.12,<3.13"
+dependencies = ["numpy>=2.1", "torch==2.14.1"]
+
+[dependency-groups]
+dev = ["pytest>=8.3", "mypy>=1.15", "ruff>=0.11", "hypothesis>=6.130"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/excelsior_ml"]
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu130", marker = "sys_platform == 'win32' or sys_platform == 'linux'" }]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "RUF"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["src", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["torch.*"]
+follow_untyped_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

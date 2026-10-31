@@ -1,0 +1,40 @@
+{
+  "name": "excelsior",
+  "private": true,
+  "type": "module",
+  "description": "A spreadsheet engine built from scratch, fast enough to train a neural network inside its cells.",
+  "author": "Aamod Bhatt",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "npm run build -w @excelsior/web",
+    "start": "node --import tsx apps/server/src/main.ts",
+    "typecheck": "tsc -p packages/engine && tsc -p packages/doc && tsc -p packages/nn2sheet && tsc -p apps/server && tsc -p apps/web",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "test": "vitest run",
+    "bench": "node --import tsx packages/engine/bench/run.ts",
+    "bench:training": "node --import tsx packages/nn2sheet/bench/training.ts",
+    "capture": "node --import tsx scripts/capture.mts runs/frames docs/assets && node --import tsx scripts/make-gif.mts runs/frames docs/assets/training.gif 1100 7",
+    "e2e": "playwright test -c apps/web/playwright.config.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.4",
+    "@playwright/test": "1.55.1",
+    "@types/node": "^24.5.2",
+    "@types/pngjs": "^6.0.5",
+    "fast-check": "^4.3.0",
+    "gifenc": "^1.0.3",
+    "pngjs": "^7.0.0",
+    "tsx": "^4.20.5",
+    "typescript": "~5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

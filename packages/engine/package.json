@@ -1,0 +1,8 @@
+{
+  "name": "@excelsior/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Formula language, evaluator and incremental recalculation engine (no DOM).",
+  "exports": { ".": "./src/index.ts" }
+}

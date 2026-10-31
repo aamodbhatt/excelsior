@@ -1,0 +1,9 @@
+{
+  "name": "@excelsior/doc",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Workbook document model, operations and formula rewriting shared by client and server.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@excelsior/engine": "0.1.0" }
+}

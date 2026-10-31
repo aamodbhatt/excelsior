@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx biome check .
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      - run: npm run e2e
+        env:
+          CI: '1'
+
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ml
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: ml/uv.lock
+      - name: Install dependencies with CPU-only torch
+        run: |
+          uv sync --no-install-package torch
+          uv pip install "torch==2.14.1" --index-url https://download.pytorch.org/whl/cpu
+      - run: uv run --no-sync ruff format --check src tests scripts
+      - run: uv run --no-sync ruff check src tests scripts
+      - run: uv run --no-sync mypy
+      - run: uv run --no-sync pytest -q

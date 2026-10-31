@@ -1,0 +1,11 @@
+{
+  "machine": "Intel Core Ultra 9 275HX laptop, 32 GB RAM, Windows 11, Node 24.22.2 (single thread)",
+  "mlp": { "steps": 2000, "stepsPerSecond": 973, "network": "2-16-1 tanh MLP, 200 points, full-batch gradient descent" },
+  "transformer": { "forwardMedianMs": 2.41, "forwardMaxMs": 6.37, "params": 27739 },
+  "parity": {
+    "mlpStepsCompared": 200,
+    "mlpWorstAbsDiffVsNumPy": 2.220446049250313e-15,
+    "transformerPrompts": 7,
+    "transformerWorstAbsDiffVsPyTorchFloat64": 5.773159728050814e-15
+  }
+}

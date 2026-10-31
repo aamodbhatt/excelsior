@@ -1,0 +1,24 @@
+{
+  "node": "v24.22.2",
+  "millionCells": {
+    "cells": 1000000,
+    "formulas": 900000,
+    "loadMs": 3454.5139,
+    "fullRecalcMs": 1457.3892999999998,
+    "evaluated": 900000,
+    "singleEditMs": 0.09289999999964493,
+    "singleEditWithSumOverColumnMs": 0.6693000000004758,
+    "heapMB": 1670
+  },
+  "chain": {
+    "length": 100000,
+    "firstRecalcMs": 93.33800000000065,
+    "headEditRecalcMs": 64.95769999999993,
+    "last": 100005
+  },
+  "mmult": {
+    "size": "256x256 · 256x256",
+    "recalcMs": 13.065700000000106,
+    "gflops": 2.568131213788754
+  }
+}

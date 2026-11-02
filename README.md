@@ -147,7 +147,7 @@ Timings vary about ±30% between runs; the table shows one full run.
 | Transformer in formulas vs PyTorch float64, 7 prompts, logits and all attention maps | max abs difference **5.8e-15** |
 
 The transformer was trained for 3,000 AdamW steps on the
-[makemore names](https://github.com/karpathy/makemore) dataset on the pod's CPU. That took 55 s; no GPU was used.
+[makemore names](https://github.com/karpathy/makemore) dataset on a CPU in 55 s (no GPU).
 It reached a validation loss of **2.020 nats/char**. The 1M-cell sheet uses about 1.7 GB of heap. Formula cells
 are the dominant cost (see the roadmap).
 

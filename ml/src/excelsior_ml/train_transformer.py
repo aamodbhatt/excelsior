@@ -1,6 +1,6 @@
 """Trains the tiny GPT on a list of names and exports float64 weights plus parity fixtures.
 
-Usage (pod):    gpu-run uv run python -m excelsior_ml.train_transformer --steps 4000 --out runs/transformer
+Usage (full):   uv run python -m excelsior_ml.train_transformer --steps 3000 --device cpu --out runs/transformer
 Usage (laptop): uv run python -m excelsior_ml.train_transformer --steps 200 --device cpu --out runs/smoke
 """
 

@@ -1,7 +1,7 @@
 /**
  * Captures the README visuals from the running app (server on BASE_URL) and measures grid scrolling.
  *   node --import tsx scripts/capture.mts <frames-dir> <assets-dir>
- * Frames are PNGs that are assembled into a GIF with ffmpeg separately.
+ * Frames are PNGs; scripts/make-gif.mts assembles them into a GIF in pure JS (no ffmpeg).
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { chromium, type Page } from '@playwright/test';
